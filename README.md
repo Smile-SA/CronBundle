@@ -9,7 +9,7 @@ Cron Bundle scheduler
 This bundle offer a command that you should use as a cronjob :
 
 ```cmd
-* * * * * cd <your_project_root> php app/console smile:cron
+* * * * * cd <your_project_root> && php app/console smile:cron
 ```
 
 This command will list all commands extending "CronAbstract" class and defined as service tagged with "smile.cron".
