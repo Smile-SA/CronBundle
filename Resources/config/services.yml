@@ -1,0 +1,14 @@
+parameters:
+    smile.cron.handler.class: Smile\CronBundle\Cron\CronHandler
+    smile.cron.service.class: Smile\CronBundle\Service\CronService
+
+services:
+    smile.cron.handler:
+        class: %smile.cron.handler.class%
+
+    smile.cron.service:
+        class: %smile.cron.service.class%
+        arguments:
+            - @smile.cron.handler
+
+
