@@ -10,6 +10,7 @@
   ],
   "require": {
     "php": ">=5.3.0",
+    "doctrine/orm": "^2.5",
     "mtdowling/cron-expression": "^1.1"
   },
   "autoload": {

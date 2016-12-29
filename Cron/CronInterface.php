@@ -40,4 +40,18 @@ interface CronInterface
      * @param array $arguments cron arguments
      */
     public function addArguments($arguments = '');
+
+    /**
+     * Set cron alias
+     *
+     * @param string $alias cron Alias
+     */
+    public function setAlias($alias);
+
+    /**
+     * Return cron alias
+     *
+     * @return string cron alias
+     */
+    public function getAlias();
 }

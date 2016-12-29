@@ -32,6 +32,9 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
     /** @var array $arguments cron arguments */
     protected $arguments = array();
 
+    /** @var string $alias cron alias */
+    protected $alias;
+
     /**
      * Execute command
      *
@@ -40,7 +43,7 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
      */
     public function run(InputInterface $input, OutputInterface $output)
     {
-        $this->execute($input, $output);
+        return $this->execute($input, $output);
     }
 
     /**
@@ -96,6 +99,8 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
     }
 
     /**
+     * Get Cron arguments
+     *
      * @param InputInterface $input Input interface
      * @param string $key
      * @return mixed return argument from input or tag settings
@@ -111,5 +116,25 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
         }
 
         return false;
+    }
+
+    /**
+     * Set cron alias
+     *
+     * @param string $alias cron alias
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    }
+
+    /**
+     * Get cron alias
+     *
+     * @return string cron alias
+     */
+    public function getAlias()
+    {
+        return $this->alias;
     }
 }

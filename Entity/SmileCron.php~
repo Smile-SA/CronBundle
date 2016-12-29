@@ -1,0 +1,54 @@
+<?php
+
+namespace Smile\CronBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SmileCron
+ *
+ * @ORM\Table(name="smile_cron")
+ * @ORM\Entity
+ */
+class SmileCron
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alias", type="string", length=255, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $alias;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="queued", type="datetime", nullable=false)
+     */
+    private $queued = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="started", type="datetime", nullable=true)
+     */
+    private $started;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ended", type="datetime", nullable=true)
+     */
+    private $ended;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=true)
+     */
+    private $status = '0';
+
+
+}
+

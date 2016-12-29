@@ -2,6 +2,10 @@
 
 namespace Smile\CronBundle\Cron;
 
+/**
+ * Class CronHandler
+ * @package Smile\CronBundle\Cron
+ */
 class CronHandler extends CronAbstract
 {
     /** @var CronInterface[][] $crons crons list */
@@ -18,6 +22,7 @@ class CronHandler extends CronAbstract
 
     /**
      * CronHandler constructor.
+     *
      * @param string $cronAlias
      * @param integer $cronPriority
      */
@@ -41,6 +46,7 @@ class CronHandler extends CronAbstract
         if (!isset($this->crons[$priority])) {
             $this->crons[$priority] = array();
         }
+        $cron->setAlias($alias);
         $cron->addArguments($arguments);
         $this->crons[$priority][$alias] = $cron;
     }

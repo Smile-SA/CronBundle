@@ -10,5 +10,6 @@ services:
         class: %smile.cron.service.class%
         arguments:
             - @smile.cron.handler
+            - @doctrine
 
 

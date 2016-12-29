@@ -21,7 +21,7 @@ class CronCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('smile:cron')
+            ->setName('smile:crons:run')
             ->setDescription('Smile cron scheduler');
     }
 
@@ -35,7 +35,6 @@ class CronCommand extends ContainerAwareCommand
     {
         /** @var CronService $cronService */
         $cronService = $this->getContainer()->get('smile.cron.service');
-
         /** @var CronInterface[] $cronsDue */
         $cronsDue = array();
 
@@ -48,7 +47,11 @@ class CronCommand extends ContainerAwareCommand
         }
 
         foreach ($cronsDue as $cron) {
-            $cron->run($input, $output);
+            if (!$cronService->isQueued($cron)) {
+                $cronService->addQueued($cron);
+            }
         }
+
+        $cronService->runQueued($input, $output);
     }
 }

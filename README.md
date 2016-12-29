@@ -20,3 +20,12 @@ You can define specific cron expression for each command as cron and prioritize 
 
 [Documentation](Resources/doc/README.md)
 
+## Changelog
+
+### 1.0.0 -> 1.0.1
+
+* cron commands are now queued : add specific entity to register
+when cron commands are queued, started and ended. Prevent multiple
+cron command call while not ended.
+* change smile:cron command to smile:crons:run command
+* add smile:crons:status command

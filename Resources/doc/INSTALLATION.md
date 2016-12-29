@@ -25,6 +25,22 @@ public function registerBundles()
 }
 ```
 
+## Add doctrine ORM support
+
+in yout ezplatform.yml, add
+
+```yaml
+doctrine:
+    orm:
+        auto_mapping: true
+```
+
+## Update your SQL schema
+
+```
+php app/console doctrine:schema:update --force
+```
+
 ## Define global cron job
 
 in your crontab, add
