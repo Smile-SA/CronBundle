@@ -46,7 +46,7 @@ php app/console doctrine:schema:update --force
 in your crontab, add
 
 ```cmd
-* * * * * cd <your_project_root> && php app/console smile:cron
+* * * * * cd <your_project_root> && php app/console smile:crons:run
 ```
 
 where <your_project_root> is your Symfony root.

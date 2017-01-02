@@ -9,7 +9,7 @@ Cron Bundle scheduler
 This bundle offer a command that you should use as a cronjob :
 
 ```cmd
-* * * * * cd <your_project_root> && php app/console smile:cron
+* * * * * cd <your_project_root> && php app/console smile:crons:run
 ```
 
 This command will list all commands extending "CronAbstract" class and defined as service tagged with "smile.cron".
@@ -21,6 +21,11 @@ You can define specific cron expression for each command as cron and prioritize 
 [Documentation](Resources/doc/README.md)
 
 ## Changelog
+
+### 1.0.1 -> 1.0.3
+
+* update composer dependencies
+* update docs
 
 ### 1.0.0 -> 1.0.1
 
