@@ -38,7 +38,7 @@ class CronService
     /**
      * List cron commands
      *
-     * @return SmileCron[] cron command list
+     * @return CronInterface[] cron command list
      */
     public function getCrons()
     {
@@ -102,7 +102,7 @@ class CronService
      *
      * @return SmileCron[] cron list with status
      */
-    public function listCrons()
+    public function listCronsStatus()
     {
         /** @var SmileCron[] $smileCrons */
         $smileCrons = $this->repository->listCrons();

@@ -32,7 +32,7 @@ class CronStatusCommand extends ContainerAwareCommand
         /** @var CronService $cronService */
         $cronService = $this->getContainer()->get('smile.cron.service');
 
-        $crons = $cronService->listCrons();
+        $crons = $cronService->listCronsStatus();
         $cronRows = array();
 
         foreach ($crons as $cron) {

@@ -115,7 +115,7 @@ class SmileCronRepository extends EntityRepository
         $query = $this->createQueryBuilder('c')
             ->getQuery();
 
-        /** @var SmileCron[] $smileCrons */
+        /** @var SmileCron[] */
         return $query->getResult();
     }
 }

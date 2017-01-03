@@ -32,6 +32,9 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
     /** @var array $arguments cron arguments */
     protected $arguments = array();
 
+    /** @var int $priority cron priority */
+    protected $priority = 100;
+
     /** @var string $alias cron alias */
     protected $alias;
 
@@ -96,6 +99,27 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
         }
 
         $this->arguments = $args;
+    }
+
+    public function getArguments()
+    {
+        $arguments = array();
+
+        foreach ($this->arguments as $key => $val) {
+            $arguments[] = '--' . $key . '=' . $val;
+        }
+
+        return implode(' ', $arguments);
+    }
+
+    public function addPriority($priority)
+    {
+        $this->priority = $priority;
+    }
+
+    public function getPriority()
+    {
+        return $this->priority;
     }
 
     /**

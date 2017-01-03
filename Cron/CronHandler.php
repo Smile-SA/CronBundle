@@ -48,13 +48,14 @@ class CronHandler extends CronAbstract
         }
         $cron->setAlias($alias);
         $cron->addArguments($arguments);
+        $cron->addPriority($priority);
         $this->crons[$priority][$alias] = $cron;
     }
 
     /**
      * Sort and return crons list
      *
-     * @return array crons list
+     * @return CronInterface[] crons list
      */
     public function getCrons()
     {
@@ -62,7 +63,7 @@ class CronHandler extends CronAbstract
         $crons = array();
         foreach ($this->crons as $priority => $cs) {
             foreach ($cs as $cron) {
-                $crons[] = $cron;
+                $crons[$priority . ';' . $cron->getAlias()] = $cron;
             }
         }
         return $crons;

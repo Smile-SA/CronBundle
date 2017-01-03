@@ -42,6 +42,20 @@ interface CronInterface
     public function addArguments($arguments = '');
 
     /**
+     * Return cron arguments
+     *
+     * @return string cron arguments
+     */
+    public function getArguments();
+
+    /**
+     * Return cron priority
+     *
+     * @return int cron priority
+     */
+    public function getPriority();
+
+    /**
      * Set cron alias
      *
      * @param string $alias cron Alias
