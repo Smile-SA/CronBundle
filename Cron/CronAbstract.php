@@ -106,7 +106,7 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
         $arguments = array();
 
         foreach ($this->arguments as $key => $val) {
-            $arguments[] = '--' . $key . '=' . $val;
+            $arguments[] = $key . ':' . $val;
         }
 
         return implode(' ', $arguments);

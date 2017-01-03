@@ -47,8 +47,8 @@ class CronCommand extends ContainerAwareCommand
         }
 
         foreach ($cronsDue as $cron) {
-            if (!$cronService->isQueued($cron)) {
-                $cronService->addQueued($cron);
+            if (!$cronService->isQueued($cron->getAlias())) {
+                $cronService->addQueued($cron->getAlias());
             }
         }
 

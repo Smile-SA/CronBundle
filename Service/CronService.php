@@ -48,22 +48,54 @@ class CronService
     /**
      * Identify if cron command is queued
      *
-     * @param CronInterface $cron cron command
+     * @param string $alias cron alias
      * @return bool true if cron command is queued
      */
-    public function isQueued(CronInterface $cron)
+    public function isQueued($alias)
     {
-        return $this->repository->isQueued($cron);
+        return $this->repository->isQueued($alias);
     }
 
     /**
      * Add cron command to queue
      *
-     * @param CronInterface $cron cron command
+     * @param string $alias cron alias
      */
-    public function addQueued(CronInterface $cron)
+    public function addQueued($alias)
     {
-        $this->repository->addQueued($cron);
+        $this->repository->addQueued($alias);
+    }
+
+    /**
+     * Return cron queued
+     *
+     * @return SmileCron[] list cron queued
+     */
+    public function listQueued()
+    {
+        /** @var SmileCron[] */
+        return $this->repository->listQueued();
+    }
+
+    /**
+     * Run cron command
+     *
+     * @param SmileCron $smileCron
+     */
+    public function run(SmileCron $smileCron)
+    {
+        $this->repository->run($smileCron);
+    }
+
+    /**
+     * End cron command
+     *
+     * @param SmileCron $smileCron
+     * @param int $status
+     */
+    public function end(SmileCron $smileCron, $status)
+    {
+        $this->repository->end($smileCron, $status);
     }
 
     /**
@@ -75,7 +107,7 @@ class CronService
     public function runQueued(InputInterface $input, OutputInterface $output)
     {
         /** @var SmileCron[] $smileCrons */
-        $smileCrons = $this->repository->listQueued();
+        $smileCrons = $this->listQueued();
 
         /** @var CronInterface[] $crons */
         $crons = $this->getCrons();
@@ -89,9 +121,9 @@ class CronService
         if ($smileCrons) {
             foreach ($smileCrons as $smileCron) {
                 if (isset($cronAlias[$smileCron->getAlias()])) {
-                    $this->repository->run($smileCron);
+                    $this->run($smileCron);
                     $status = $cronAlias[$smileCron->getAlias()]->run($input, $output);
-                    $this->repository->end($smileCron, $status);
+                    $this->end($smileCron, $status);
                 }
             }
         }

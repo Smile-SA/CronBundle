@@ -15,15 +15,15 @@ class SmileCronRepository extends EntityRepository
     /**
      * Identify of cron command is queued
      *
-     * @param CronInterface $cron cron command
+     * @param string $alias cron alias
      * @return bool true if cron is already queued
      */
-    public function isQueued(CronInterface $cron)
+    public function isQueued($alias)
     {
         $query = $this->createQueryBuilder('c')
             ->where('c.alias = :alias')
             ->andWhere('c.ended is NULL')
-            ->setParameter('alias', $cron->getAlias())
+            ->setParameter('alias', $alias)
             ->getQuery();
 
         $result = $query->setMaxResults(1)->getOneOrNullResult();
@@ -37,13 +37,13 @@ class SmileCronRepository extends EntityRepository
     /**
      * Add cron to queued
      *
-     * @param CronInterface $cron cron command
+     * @param string $alias cron alias
      */
-    public function addQueued(CronInterface $cron)
+    public function addQueued($alias)
     {
         $query = $this->createQueryBuilder('c')
             ->where('c.alias = :alias')
-            ->setParameter('alias', $cron->getAlias())
+            ->setParameter('alias', $alias)
             ->getQuery();
 
         /** @var SmileCron $smileCron */
@@ -51,7 +51,7 @@ class SmileCronRepository extends EntityRepository
 
         if (!$smileCron) {
             $smileCron = new SmileCron();
-            $smileCron->setAlias($cron->getAlias());
+            $smileCron->setAlias($alias);
         }
 
         $now = new \DateTime('now');
