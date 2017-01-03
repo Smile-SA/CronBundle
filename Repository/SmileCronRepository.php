@@ -3,7 +3,6 @@
 namespace Smile\CronBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Smile\CronBundle\Cron\CronInterface;
 use Smile\CronBundle\Entity\SmileCron;
 
 /**
