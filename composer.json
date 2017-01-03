@@ -1,5 +1,6 @@
 {
   "name": "smile/cron-bundle",
+  "type": "symfony-bundle",
   "description": "Cron scheduler",
   "license": ["MIT"],
   "authors": [
