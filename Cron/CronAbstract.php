@@ -4,6 +4,7 @@ namespace Smile\CronBundle\Cron;
 
 use Cron\CronExpression;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -37,6 +38,16 @@ class CronAbstract extends ContainerAwareCommand implements CronInterface
 
     /** @var string $alias cron alias */
     protected $alias;
+
+    /**
+     * Init Application context
+     *
+     * @param Application $application
+     */
+    public function initApplication(Application $application)
+    {
+        $this->setApplication($application);
+    }
 
     /**
      * Execute command
