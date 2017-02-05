@@ -2,6 +2,7 @@
 
 namespace Smile\CronBundle\Cron;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -12,6 +13,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 interface CronInterface
 {
+    /** set Application context */
+    public function initApplication(Application $application);
+
     /**
      * Execute command
      *
