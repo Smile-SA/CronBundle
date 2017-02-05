@@ -2,7 +2,7 @@
   "name": "smile/cron-bundle",
   "type": "symfony-bundle",
   "description": "Cron scheduler",
-  "license": ["MIT"],
+  "license": ["GPL-3.0"],
   "authors": [
     {
       "name": "Smile SA",
