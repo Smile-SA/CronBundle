@@ -4,12 +4,12 @@ parameters:
 
 services:
     smile.cron.handler:
-        class: %smile.cron.handler.class%
+        class: "%smile.cron.handler.class%"
 
     smile.cron.service:
-        class: %smile.cron.service.class%
+        class: "%smile.cron.service.class%"
         arguments:
-            - @smile.cron.handler
-            - @doctrine
+            - "@smile.cron.handler"
+            - "@doctrine"
 
 
